@@ -1,0 +1,16 @@
+.titulo{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+    margin: 10px;
+    margin-left: 600px;
+    padding: 0 30px;
+    color: rgba(91, 162, 228, 0.74);
+    font-family: consolas;
+    font-size: 20px;
+}
+
+.pais{
+    background: cornsilk;
+    margin-left: 300px;
+    display: inline-block;
+}

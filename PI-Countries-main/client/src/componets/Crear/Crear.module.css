@@ -1,0 +1,43 @@
+.titulo{
+    margin: 20px;
+    margin-left: 600px;
+    color: rgba(91, 162, 228, 0.74);
+    font-family: consolas;
+    font-size: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.form{
+    background: rgba(105, 184, 248, 0.65);
+    display: flex;
+    justify-content: space-around;
+    margin-left: 320px;
+    margin-right: 80px;
+}
+
+.names{
+    padding: 20px;
+}
+
+.diff{
+    padding: 20px;
+}
+
+.dur{
+    padding: 20px;
+}
+
+.tem{
+    padding: 20px;
+}
+
+.pais{
+    padding: 20px;
+}
+
+.btnActivity{
+    padding: 10px;
+    margin-left: 100px;
+    margin-bottom: 10px;
+}

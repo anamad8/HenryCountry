@@ -1,0 +1,54 @@
+.titulo{
+    margin: -100px;
+    margin-left: 600px;
+    position:absolute;
+    padding: 0 30px;
+    color: rgba(91, 162, 228, 0.74);
+    font-family: consolas;
+    font-size: 20px;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+    justify-content: center;
+    gap: 3rem 1rem;
+    margin-left: 90px;
+
+}
+
+.btnPag{
+    display: flex;
+}
+
+.btnPagIzq{
+    margin-left: 270px;
+    background: rgb(205, 217, 241);
+    background-image: url(../../img/flehaIzq.png);
+    padding: 15px 20px;
+    text-decoration: none;
+    border-radius: 15px;
+    color: rgb(23, 74, 175);
+    font-weight: 700;
+}
+
+.btnPagDer{
+    margin-left: 400px;
+    background: rgb(205, 217, 241);
+    background-image: url(../../img/flehaDer.png);
+    padding: 15px 20px;
+    text-decoration: none;
+    border-radius: 15px;
+    color: rgb(23, 74, 175);
+    font-weight: 700;
+}
+
+.btnPag p{
+    color: rgb(23, 74, 175);
+    font-weight: 900;
+    background: rgb(205, 217, 241);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+
