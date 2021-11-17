@@ -9,13 +9,12 @@ function validate(details){
     let errors = {}
 
     if(!details.name){
-        errors.name = 'Name is required';
+        errors.name = 'Se requiere el nombre';
     }
-    if(!details.duration){
-        errors.duration = 'Duration is required';
-    } else if (/(?:[01]\d|2[0-3]):(?:[0-5]\d):(?:[0-5]\d)/.test(details.duration)){
-        errors.duration = 'Duration must be HH:MM:SS format';
+    if(!details.dificultad){
+        errors.dificultad = 'Se requiere el dificultad';
     }
+    
     return errors
 } 
 
@@ -41,7 +40,7 @@ export default function Crear() {
         e.preventDefault();
         console.log(details)
         dispatch(createActivity(details))
-        alert('Activity Created')
+        alert('Actividad Creada')
         
         setDetails({
             name:'',
@@ -88,93 +87,94 @@ export default function Crear() {
                 <h2>Crea tu actiividad</h2>
             </div>
             <div  className={s.form}>
-            <form onSubmit= {(e) => handleSubmit(e)}>
-                    <div className={s.names}>
-                        <label>Nombre: </label>
-                        <input 
-                            type= 'text'
-                            value= {details.name}
-                            name= 'name'
-                            onChange={(e) => handleChange(e)}
-                        />
-                        {errors.name && (
-                            <p className='error'>{errors.name}</p>
-                        )}
-                        
-                    </div>
-                    <div className={s.diff}>
-                        <label>Dificultad: </label>
-                        <select
-                            name='dificultad'
-                            onChange={(e) => handleChange(e)}
-                        >
-                            <option value=''>Dificultad...</option>
-                            <option value='1'>1</option>
-                            <option value='2'>2</option>
-                            <option value='3'>3</option>
-                            <option value='4'>4</option>
-                            <option value='5'>5</option>
-                        </select>
-                    </div>
-                    <div className={s.dur}>
-                    <label>Duración: </label>
-                        <select
-                            name='duration'
-                            value={details.duration}
-                            onChange={(e) => handleChange(e)}
-                        >
-                            <option value=''>Duración...</option>
-                            <option value='1'>1 Hora</option>
-                            <option value='2'>2 Hora</option>
-                            <option value='3'>3 Hora</option>
-                            <option value='4'>1 Día</option>
-                            <option value='5'>Indefinido</option>
-                        </select>
+                <form onSubmit= {(e) => handleSubmit(e)}>
+                        <div className={s.names}>
+                            <label>Nombre:</label>
+                            <input 
+                                type= 'text'
+                                value= {details.name}
+                                name= 'name'
+                                onChange={(e) => handleChange(e)}
+                            />
+                            {errors.name && (
+                                <p className='error'>{errors.name}</p>
+                            )}
+                            
+                        </div>
+                        <div className={s.names}>
+                            <label>Dificultad:</label>
+                            <select
+                                name='dificultad'
+                                onChange={(e) => handleChange(e)}>
+                                <option value=''>Dificultad...</option>
+                                <option value='1'>1</option>
+                                <option value='2'>2</option>
+                                <option value='3'>3</option>
+                                <option value='4'>4</option>
+                                <option value='5'>5</option>
+                            </select>
+                            {errors.dificultad && (
+                                <p className='dificultad'>{errors.dificultad}</p>
+                            )}
+                        </div>
+                        <div className={s.names}>
+                        <label>Duración:</label>
+                            <select
+                                name='duration'
+                                value={details.duration}
+                                onChange={(e) => handleChange(e)}
+                            >
+                                <option value=''>Duración...</option>
+                                <option value='1'>1 Hora</option>
+                                <option value='2'>2 Hora</option>
+                                <option value='3'>3 Hora</option>
+                                <option value='4'>1 Día</option>
+                                <option value='5'>Indefinido</option>
+                            </select>
+                        </div>
+                        <div className={s.names}>
+                            <label>Temporada:</label>
+                            <selec className={s.temp}>
+                                <input
+                                    type='checkbox'
+                                    name='Verano'
+                                    value='Verano'
+                                    onChange={(e) => handleCheck(e)}
+                                />Verano</selec>
+                            <selec className={s.temp}>
+                                <input
+                                    type='checkbox'
+                                    name='Otoño'
+                                    value='Otoño'
+                                    onChange={(e) => handleCheck(e)}
+                                />Otroño</selec>
+                            <selec className={s.temp}>
+                                <input
+                                    type='checkbox'
+                                    name='Invierno'
+                                    value='Invierno'
+                                    onChange={(e) => handleCheck(e)}
+                                />Invierno</selec>
+                            <selec className={s.temp}>
+                                <input
+                                    type='checkbox'
+                                    name='Primavera'
+                                    value='Primavera'
+                                    onChange={(e) => handleCheck(e)}
+                                />Primavera</selec>   
+                        </div>
+                        <div className={s.names}>
+                            <label>Seleccona País:</label>
+                            <select onChange= {(e) => handleSelect(e)}>
+                                <option value=''>País...</option>
+                                {countries.map((c) => (
+                                    <option value={c.id}>{c.name}</option>
+                                ))}
+                            </select>
+                        </div>
 
-                    </div>
-                    <div className={s.tem}>
-                        <label>Temporada: </label>
-                        <label>
-                            <input
-                                type='checkbox'
-                                name='Verano'
-                                value='Verano'
-                                onChange={(e) => handleCheck(e)}
-                            />Verano</label>
-                        <label>
-                            <input
-                                type='checkbox'
-                                name='Otoño'
-                                value='Otoño'
-                                onChange={(e) => handleCheck(e)}
-                            />Otroño</label>
-                        <label>
-                            <input
-                                type='checkbox'
-                                name='Invierno'
-                                value='Invierno'
-                                onChange={(e) => handleCheck(e)}
-                            />Invierno</label>
-                        <label>
-                            <input
-                                type='checkbox'
-                                name='Primavera'
-                                value='Primavera'
-                                onChange={(e) => handleCheck(e)}
-                            />Primavera</label>   
-                    </div>
-                    <div className={s.pais}>
-                        <label>Seleccona País: </label>
-                        <select onChange= {(e) => handleSelect(e)}>
-                            <option value=''>País...</option>
-                            {countries.map((c) => (
-                                <option value={c.id}>{c.name}</option>
-                            ))}
-                        </select>
-                    </div>
-
-                    <button type='submit' className={s.btnActivity}>Agregar actividad</button>
-                </form>
+                        <button type='submit' className={s.btnActivity}>Agregar actividad</button>
+                    </form>
                 </div>
         </div>
     )

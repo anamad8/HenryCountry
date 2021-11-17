@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
             }
         },
         
-        // include: Activity
+        include: Activity
         })
         
         return res.json(nameCountry)

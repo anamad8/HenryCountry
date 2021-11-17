@@ -18,14 +18,13 @@ function rootReducer(state = initialState, action){
         case 'FILTER_CONTINENT':
             const allCountries = state.allCountries;
             const continentFilter = action.payload === 'All' ? allCountries : allCountries.filter( c => c.continente === action.payload)
-            console.log(continentFilter)
+
             return {
                 ...state,
                 allCountries: continentFilter
             }
         case 'SORT':
         var sorted 
-        console.log(sorted)
             if(action.payload === 'nada'){
                 sorted = state.allCountries
             }

@@ -14,30 +14,49 @@
     justify-content: space-around;
     margin-left: 320px;
     margin-right: 80px;
+    border-radius: 50px;
 }
 
 .names{
     padding: 20px;
 }
-
-.diff{
-    padding: 20px;
+.names label{
+    text-decoration: underline;
+    font-size: 25px;
+    font-weight: 500;
+    color: rgba(10, 10, 163, 0.671);
+    padding-right: 15px;
 }
 
-.dur{
-    padding: 20px;
+.names input{
+    background: rgb(205, 217, 241);
+    padding: 10px;
+    border-radius: 20px;
 }
 
-.tem{
-    padding: 20px;
+.names select{
+    background: rgb(205, 217, 241);
+    padding: 10px;
+    border-radius: 20px;
 }
 
-.pais{
-    padding: 20px;
+.temp{
+    color: rgba(10, 10, 163, 0.671);
+    font-size: 20px;
+    font-weight: 400;
 }
 
 .btnActivity{
-    padding: 10px;
+    padding: 10px 70px;
     margin-left: 100px;
     margin-bottom: 10px;
+    border-radius: 20px;
+    background: rgba(10, 10, 163, 0.863);
+    color: rgb(205, 217, 241);
+    font-size: 25px;
+}
+
+.btnActivity:hover{
+    background: rgb(205, 217, 241);
+    color:rgba(10, 10, 163, 0.863);
 }
