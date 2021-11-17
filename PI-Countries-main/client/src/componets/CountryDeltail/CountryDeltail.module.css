@@ -1,6 +1,5 @@
 .titulo{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
     margin: 10px;
     margin-left: 600px;
     padding: 0 30px;
@@ -10,7 +9,54 @@
 }
 
 .pais{
-    background: cornsilk;
+    display: block;
     margin-left: 300px;
-    display: inline-block;
+    margin-right: 20px;
+    background: rgba(63, 161, 246, 0.075);
+    border-radius: 50px;
+}
+
+.card{
+    
+    display: grid;
+    justify-items: center;
+    padding: 20px;
+
+}
+
+.card img{
+    width: 450px;
+    height: 250px;
+}
+
+.pais .card h2{
+    background: rgba(53, 154, 236, 0.603);
+    padding: 10px;
+    border-radius: 20px;
+    color: rgba(91, 162, 228, 0.74);
+}
+
+.detalles{
+    background: rgba(53, 154, 236, 0.603);
+    padding: 5px 60px;
+    border-radius: 20px;
+    color: rgba(45, 145, 240, 0.781);
+    font-size: 20px;
+    
+}
+
+.detalles p:hover{
+    transform: translateY(-15px);
+}
+
+.act{
+    background: rgba(53, 154, 236, 0.603);
+    padding: 5px 20px;
+    border-radius: 20px;
+    color: rgba(45, 145, 240, 0.781);
+    font-size: 20px;
+}
+
+.h2{
+    padding-left: 50px;
 }

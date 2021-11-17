@@ -15,7 +15,7 @@ function App() {
         <Route exact path="/" element={<Inicio />} />
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/activity" element={<Crear />}/>
-        <Route exact path="/home/countries/:id" render={({match}) => <CountryDeltail country={match.params.id} />} />
+        <Route exact path="/home/countries/:id" element={<CountryDeltail />}  />
       </Routes>
     </BrowserRouter>
   )

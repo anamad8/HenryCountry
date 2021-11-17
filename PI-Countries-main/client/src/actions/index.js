@@ -45,3 +45,25 @@ export function createActivity(details){
         return json
     }
 }
+
+export function sort(payload){
+    return{
+        type: 'SORT',
+        payload
+    }
+}
+
+export function filterContinent(payload){
+    // console.log(payload)
+    return{
+        type: 'FILTER_CONTINENT',
+        payload
+    }
+}
+
+export function filterActivity(payload){
+    return{
+        type: 'FILTER_ACTIVITY',
+        payload
+    }
+}

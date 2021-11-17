@@ -40,7 +40,7 @@ conn.sync({ force: true }).then( async () => {
 					continente: c.region,
 					capital: c.capital ? c.capital[0] : "capital not found",
 					subRegion: c.subregion,
-          aria: c.aria,
+          area: c.area,
           poblacion: c.population,
         });
         
