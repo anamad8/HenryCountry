@@ -11,9 +11,7 @@ import { getCountries, filterContinent, sort, filterActivity  } from '../../acti
 export default function Home() {
     const dispatch = useDispatch();
     const allCountries = useSelector((state) => state.allCountries); //reeemplazo del mapStateToProps
-    const activityFilter = useSelector((state) => state.allCountries)
-    // console.log(allCountries)
-    
+    console.log(allCountries)
     const [order, setOrder] = useState("")
     const [currentPage, setCurrentPage] = useState(1);
     const countriesPerPage = 9;
@@ -31,6 +29,7 @@ export default function Home() {
 
     function handleFilterActivity(e){
         dispatch(filterActivity(e.target.value))
+        // console.log(filterActivity)
     }
 
     function handleFilterContinent(e){
@@ -75,10 +74,13 @@ export default function Home() {
                 <select onChange = {(e) => handleFilterActivity(e)} className={s.selec}>
                     <option value='All'>Actividad</option>
                     {
-                        activityFilter.map(activity => (
-                            <option value={activity.name}>{activity.name}</option>
+                        allCountries.map(activity => (
+                            activity.activities.map(turismo => (
+                                <option value={turismo.name}>{turismo.name}</option>
+                            ))
                         ))
                     }
+                    
                 </select>
             </div>
 

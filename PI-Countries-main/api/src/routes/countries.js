@@ -20,8 +20,9 @@ router.get('/', async (req, res) => {
         return res.json(nameCountry)
 
     } else {
-        const limitCountries = await Country.findAll()
+        const limitCountries = await Country.findAll({include: Activity})
                 return res.status(200).json(limitCountries)
+                
     }
 })
 
@@ -30,6 +31,8 @@ router.get('/:id', async (req, res) => {
 	let country = await Country.findByPk(id, {include: Activity});
 	res.send(country);
 });
+
+
 
 
 

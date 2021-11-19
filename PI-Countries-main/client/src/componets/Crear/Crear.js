@@ -38,7 +38,7 @@ export default function Crear() {
 
     function handleSubmit(e){
         e.preventDefault();
-        console.log(details)
+        // console.log(details)
         dispatch(createActivity(details))
         alert('Actividad Creada')
         
