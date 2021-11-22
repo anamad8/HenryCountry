@@ -14,7 +14,7 @@ export default function CountryDeltail ()  {
     
     useEffect(() => {
         dispatch(countryDetail(id))
-    },[dispatch, id])
+    },[])
     
     return (
         <div>
