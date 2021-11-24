@@ -63,3 +63,9 @@
     background: rgb(205, 217, 241)
 }
 
+.container h2{
+    display: grid;
+    justify-content: center;
+    margin-left: 100px;
+    color: rgb(170, 194, 243)
+}

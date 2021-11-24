@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Buscador from '../Buscador/Buscador';
 import Nav from '../Nav/Nav';
 import Card from '../Card/Card';
-import Paged from '../../Paged/Paged';
+import Paged from '../Paged/Paged';
 import s from './Home.module.css'
 import { useSelector, useDispatch } from 'react-redux';
 import { getCountries, filterContinent, sort, filterActivity  } from '../../actions/index';
@@ -86,7 +86,9 @@ export default function Home() {
 
             <div className={s.container}>
             {
-                allCountriesPag?.map( (c) =>{
+                
+                allCountriesPag.length === 0 ? <h2>No se encontro el pais</h2> : allCountriesPag.map( (c) =>{
+                    
                     return(
                             <Card imgBandera={c.imgBandera} name={c.name} continente={c.continente} key={c.id} id={c.id} />
                         )
