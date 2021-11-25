@@ -12,16 +12,16 @@ router.post("/", async (req, res) => {
         countries
     })
 
-    // .then((act) => {
-    //     countries.map((cat) => {
-    //         Country.findAll({ where: { id: cat} })
-    //             .then((pais) => {
-    //                 act.addCountry(pais[0]);
-    //             })
+    .then((act) => {
+        countries.map((cat) => {
+            Country.findAll({ where: { id: cat} })
+                .then((pais) => {
+                    act.addCountry(pais[0]);
+                })
 
-    //     })
-    //     return act
-    // })
+        })
+        return act
+    })
     .then(resp => {
         res.status(200).send(resp)
     })
@@ -39,16 +39,14 @@ router.get('/', async (req, res) => {
     
 })
 
-router.get('/filterActivity', async (req, res) => {
+// router.get('/filterActivity', async (req, res) => {
 
-    const allActivity = await Activity.findAll({
-        
-    })
+//     const allActivity = await Activity.findAll({})
     
-    return res.json(allActivity)
+//     return res.json(allActivity)
 
 
-})
+// })
 
 
 

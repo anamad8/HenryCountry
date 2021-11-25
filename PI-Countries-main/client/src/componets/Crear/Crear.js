@@ -93,13 +93,20 @@ export default function Crear() {
             })
         }
     }
-    // console.log(details)
 
     function handleSelect(e){
-        setDetails({
-            ...details,
-            countries:[...details.countries, e.target.value] 
-        })
+        
+        if(e.target.checked){
+            setDetails({
+                ...details,
+                countries:[...details.countries, e.target.value] 
+            })
+        }else{
+            setDetails({
+                ...details,
+                countries: details.countries.filter(t => t !== e.target.value )
+            })
+        }
     }
 
     return (
@@ -172,7 +179,7 @@ export default function Crear() {
                                     value='Otoño'
                                     onChange={(e) => handleCheck(e)}/>
                                     <label>Otoño</label>
-                           
+
                                 <input
                                     type='checkbox'
                                     name='temporada'
@@ -186,19 +193,22 @@ export default function Crear() {
                                     value='Primavera'
                                     onChange={(e) => handleCheck(e)}/>
                                     <label>Primavera</label>
-                                  
+
                                 {errors.temporada && (
                                 <p className='error'>{errors.temporada}</p>
                             )} 
                         </div>
                         <div className={s.names}>
                             <label>Seleccona País:</label>
-                            <select multiple onChange= {(e) => {handleSelect(e); console.log(e.target.value)}}>
-                                <option value=''>País...</option>
+                            
+                            <div >
                                 {countries.map((c,key) => (
-                                    <option key={key} value={c.id}>{c.name} </option>
+                                    <div key={key} onChange= {(e) => {handleSelect(e); console.log(e.target.value)}} >
+                                        <input type="checkbox" value={c.id} name='countries' />
+                                            {c.name} 
+                                    </div>
                                 ))}
-                            </select>
+                            </div>
                             {errors.countries && (
                                 <p className='error'>{errors.countries}</p>
                             )}
