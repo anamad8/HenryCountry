@@ -1,5 +1,7 @@
 const initialState = {   
     allCountries : [],
+    allActivity: [],
+    pais: [],
     detail: {}
 }
 
@@ -8,7 +10,13 @@ function rootReducer(state = initialState, action){
         case 'GET_COUNTRIES':
             return {
                 ...state,
-                allCountries: action.payload
+                allCountries: action.payload,
+                pais: action.payload
+            }
+        case 'GET_ACTIVITY':
+            return{
+                ...state,
+                allActivity: action.payload
             }
         case 'GET_BY_NAME':
             return {
@@ -16,10 +24,9 @@ function rootReducer(state = initialState, action){
                 allCountries: action.payload
             }
         case 'FILTER_CONTINENT':
-            const allCountries = state.allCountries;
+            const allCountries = state.pais;
             const continentFilter = action.payload === 'All' ? allCountries :
             allCountries.filter( c => c.continente === action.payload)
-
             return {
                 ...state,
                 allCountries: continentFilter

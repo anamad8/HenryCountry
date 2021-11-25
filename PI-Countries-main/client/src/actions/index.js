@@ -9,6 +9,15 @@ export function getCountries(){
         })
     }
 }
+export function getActivity(){
+    return async function(dispatch){
+        var json = await axios('http://localhost:3001/activity');
+        return dispatch({
+            type: 'GET_ACTIVITY',
+            payload: json.data
+        })
+    }
+}
 
 export function getNameCountries(name){
     return async function(dispatch){

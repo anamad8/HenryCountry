@@ -5,13 +5,14 @@ import Card from '../Card/Card';
 import Paged from '../Paged/Paged';
 import s from './Home.module.css'
 import { useSelector, useDispatch } from 'react-redux';
-import { getCountries, filterContinent, sort, filterActivity  } from '../../actions/index';
+import { getActivity, getCountries, filterContinent, sort, filterActivity  } from '../../actions/index';
 
 
 export default function Home() {
     const dispatch = useDispatch();
     const allCountries = useSelector((state) => state.allCountries); //reeemplazo del mapStateToProps
-    console.log(allCountries)
+    const allActivity = useSelector ((state) => state.allActivity);
+    // console.log(allCountries)
     const [order, setOrder] = useState("")
     const [currentPage, setCurrentPage] = useState(1);
     const countriesPerPage = 9;
@@ -24,7 +25,8 @@ export default function Home() {
     }
 
     useEffect(() => {
-        dispatch(getCountries()) //reemplazo del mapDispatchToProps
+        dispatch(getCountries());
+        dispatch(getActivity())  //reemplazo del mapDispatchToProps
     }, [dispatch])
 
     function handleFilterActivity(e){
@@ -33,7 +35,9 @@ export default function Home() {
     }
 
     function handleFilterContinent(e){
+        e.preventDefault();
         dispatch(filterContinent(e.target.value))
+        console.log(e.target.value)
     }
 
     function handleSort(e){
@@ -41,7 +45,7 @@ export default function Home() {
         dispatch(sort(e.target.value));
         setCurrentPage(1);
         setOrder(e.target.value)
-        console.log(e.target.value)
+        // console.log(e.target.value)
 
     }
     
@@ -74,11 +78,9 @@ export default function Home() {
                 <select onChange = {(e) => handleFilterActivity(e)} className={s.selec}>
                     <option value='All'>Actividad</option>
                     {
-                        allCountries.map(activity => (
-                            activity.activities.map(turismo => (
-                                <option value={turismo.name}>{turismo.name}</option>
+                        allActivity.map(a => (
+                                <option value={a.name}>{a.name}</option>
                             ))
-                        ))
                     }
                     
                 </select>

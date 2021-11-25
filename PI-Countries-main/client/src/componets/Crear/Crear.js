@@ -14,8 +14,19 @@ function validate(details){
     if(!details.dificultad){
         errors.dificultad = 'Se requiere el dificultad';
     }
+    if(!details.duration){
+        errors.duration = 'Se requiere el duration'
+    }
+    if(!details.temporada){
+        errors.temporada = 'Se requiere el temporada'
+    }
+    if(!details.countries){
+        errors.countries = 'Se requiere el pais'
+    }
+    console.log("valider", Object.keys(errors).length === 0)
     
     return errors
+    
 } 
 
 export default function Crear() {
@@ -29,27 +40,36 @@ export default function Crear() {
         dificultad:'',
         duration:'',
         temporada:'',
-        countries: []
+        countries: ''
         
     })
 
     const[errors, setErrors] = useState({});
 
-
     function handleSubmit(e){
         e.preventDefault();
-        // console.log(details)
-        dispatch(createActivity(details))
-        alert('Actividad Creada')
+
+        const err = validate(details)
+
+        setErrors(err)
+    
+            console.log(Object.keys(err).length === 0)
+            if(Object.keys(err).length === 0){
+                
+                dispatch(createActivity(details))
+    
+                alert('Actividad Creada')
+                
+                setDetails({
+                    name:'',
+                    dificultad:'',
+                    duration:'',
+                    temporada:'',
+                    countries: []
+                })
+                history('/home')
+           }
         
-        setDetails({
-            name:'',
-            dificultad:'',
-            duration:'',
-            temporada:'',
-            countries: []
-        })
-        history('/home')
     }
 
     function handleChange(e){
@@ -57,17 +77,19 @@ export default function Crear() {
             ...details,
             [e.target.name] : e.target.value
         })
-        setErrors( validate ({
-            ...details,
-            [e.target.name] : e.target.value
-        }))
+        setErrors( validate (details))
     }
 
     function handleCheck(e){
         if(e.target.checked){
             setDetails({
                 ...details,
-                temporada: e.target.value
+                temporada: [...details.temporada, e.target.value]
+            })
+        }else{
+            setDetails({
+                ...details,
+                temporada: details.temporada.filter(t => t !== e.target.value )
             })
         }
     }
@@ -76,7 +98,7 @@ export default function Crear() {
     function handleSelect(e){
         setDetails({
             ...details,
-            countries: [...details.countries, e.target.value]
+            countries:[...details.countries, e.target.value] 
         })
     }
 
@@ -131,46 +153,55 @@ export default function Crear() {
                                 <option value='4'>1 Día</option>
                                 <option value='5'>Indefinido</option>
                             </select>
+                            {errors.duration && (
+                                <p className='error'>{errors.duration}</p>
+                            )}
                         </div>
                         <div className={s.names}>
                             <label>Temporada:</label>
-                            <selec className={s.temp}>
+                            
                                 <input
                                     type='checkbox'
-                                    name='Verano'
+                                    name='temporada'
                                     value='Verano'
-                                    onChange={(e) => handleCheck(e)}
-                                />Verano</selec>
-                            <selec className={s.temp}>
+                                    onChange={(e) => handleCheck(e)}/>
+                                    <label>Verano</label>
                                 <input
                                     type='checkbox'
-                                    name='Otoño'
+                                    name='temporada'
                                     value='Otoño'
-                                    onChange={(e) => handleCheck(e)}
-                                />Otroño</selec>
-                            <selec className={s.temp}>
+                                    onChange={(e) => handleCheck(e)}/>
+                                    <label>Otoño</label>
+                           
                                 <input
                                     type='checkbox'
-                                    name='Invierno'
+                                    name='temporada'
                                     value='Invierno'
-                                    onChange={(e) => handleCheck(e)}
-                                />Invierno</selec>
-                            <selec className={s.temp}>
+                                    onChange={(e) => handleCheck(e)}/>
+                                    <label>Invierno</label>
+                            
                                 <input
                                     type='checkbox'
-                                    name='Primavera'
+                                    name='temporada'
                                     value='Primavera'
-                                    onChange={(e) => handleCheck(e)}
-                                />Primavera</selec>   
+                                    onChange={(e) => handleCheck(e)}/>
+                                    <label>Primavera</label>
+                                  
+                                {errors.temporada && (
+                                <p className='error'>{errors.temporada}</p>
+                            )} 
                         </div>
                         <div className={s.names}>
                             <label>Seleccona País:</label>
-                            <select onChange= {(e) => handleSelect(e)}>
+                            <select multiple onChange= {(e) => {handleSelect(e); console.log(e.target.value)}}>
                                 <option value=''>País...</option>
-                                {countries.map((c) => (
-                                    <option value={c.id}>{c.name}</option>
+                                {countries.map((c,key) => (
+                                    <option key={key} value={c.id}>{c.name} </option>
                                 ))}
                             </select>
+                            {errors.countries && (
+                                <p className='error'>{errors.countries}</p>
+                            )}
                         </div>
 
                         <button type='submit' className={s.btnActivity}>Agregar actividad</button>

@@ -12,22 +12,42 @@ router.post("/", async (req, res) => {
         countries
     })
 
-    .then((act) => {
-        countries.map((cat) => {
-            Country.findAll({ where: { id: cat} })
-                .then((pais) => {
-                    act.addCountry(pais[0]);
-                })
+    // .then((act) => {
+    //     countries.map((cat) => {
+    //         Country.findAll({ where: { id: cat} })
+    //             .then((pais) => {
+    //                 act.addCountry(pais[0]);
+    //             })
 
-        })
-        return act
-    })
+    //     })
+    //     return act
+    // })
     .then(resp => {
         res.status(200).send(resp)
     })
     .catch(err => console.log(err));
 
     
+})
+
+router.get('/', async (req, res) => {
+
+        const allActivity = await Activity.findAll()
+        
+        return res.json(allActivity)
+
+    
+})
+
+router.get('/filterActivity', async (req, res) => {
+
+    const allActivity = await Activity.findAll({
+        
+    })
+    
+    return res.json(allActivity)
+
+
 })
 
 

@@ -41,7 +41,7 @@ conn.sync({ force: true }).then( async () => {
 					capital: c.capital ? c.capital[0] : "capital not found",
 					subRegion: c.subregion,
           area: c.area,
-          poblacion: c.population,
+          poblacion: c.population
         });
         
 			} catch (error) {
