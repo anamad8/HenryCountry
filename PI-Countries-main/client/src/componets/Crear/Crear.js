@@ -201,14 +201,14 @@ export default function Crear() {
                         <div className={s.names}>
                             <label>Seleccona País:</label>
                             
-                            <div >
+                            <opcion className={s.check} >
                                 {countries.map((c,key) => (
-                                    <div key={key} onChange= {(e) => {handleSelect(e); console.log(e.target.value)}} >
+                                    <opcion className={s.check__pais} key={key} onChange= {(e) => {handleSelect(e); console.log(e.target.value)}} >
                                         <input type="checkbox" value={c.id} name='countries' />
                                             {c.name} 
-                                    </div>
+                                    </opcion>
                                 ))}
-                            </div>
+                            </opcion>
                             {errors.countries && (
                                 <p className='error'>{errors.countries}</p>
                             )}

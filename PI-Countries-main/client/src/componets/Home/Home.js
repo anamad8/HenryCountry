@@ -11,7 +11,7 @@ import { getActivity, getCountries, filterContinent, sort, filterActivity  } fro
 export default function Home() {
     const dispatch = useDispatch();
     const allCountries = useSelector((state) => state.allCountries); //reeemplazo del mapStateToProps
-    const allActivity = useSelector ((state) => state.allActivity);
+    var allActivity = useSelector ((state) => state.allActivity);
     // console.log(allCountries)
     const [order, setOrder] = useState("")
     const [currentPage, setCurrentPage] = useState(1);
@@ -28,6 +28,24 @@ export default function Home() {
         dispatch(getCountries());
         dispatch(getActivity())  //reemplazo del mapDispatchToProps
     }, [dispatch])
+
+    // useEffect (()  => {
+    //     setTimeout(()=> {
+    //         var actividad = new Set(allActivity)
+    //         console.log(allActivity,actividad)
+    //     },2000)
+        
+    // },[])
+
+    // useEffect (()  => {
+        
+    //         var actividad = allActivity.filter(function(ele , pos){
+    //             return allActivity.indexOf(ele) === pos;
+    //         })
+    //         console.log(allActivity,actividad)
+        
+        
+    // },[])
 
     function handleFilterActivity(e){
         dispatch(filterActivity(e.target.value))
@@ -78,8 +96,9 @@ export default function Home() {
                 <select onChange = {(e) => handleFilterActivity(e)} className={s.selec}>
                     <option value='All'>Actividad</option>
                     {
+                        
                         allActivity.map(a => (
-                                <option value={a.name}>{a.name}</option>
+                                <option key={a.key} value={a.name}>{a.name}</option>
                             ))
                     }
                     
