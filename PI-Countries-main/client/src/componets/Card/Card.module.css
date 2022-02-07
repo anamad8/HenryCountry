@@ -19,6 +19,7 @@
     text-align: center;
     transition: all 0.25s;
     background:rgba(63, 161, 246, 0.075);
+    color: #fff;
 }
 
 .card:hover{

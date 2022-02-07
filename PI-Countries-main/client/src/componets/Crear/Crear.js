@@ -68,7 +68,7 @@ export default function Crear() {
                     countries: []
                 })
                 history('/home')
-           }
+            }
         
     }
 
